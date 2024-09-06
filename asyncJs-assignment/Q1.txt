@@ -1,0 +1,46 @@
+Q1. Define XMLHttpRequest object, and How is it used in AJAX?
+
+ans:
+Definition of `XMLHttpRequest`
+
+The XMLHttpRequest (XHR) object is a JavaScript object that allows web pages to interact with servers by making HTTP requests. It is used to retrieve data from a URL without having to do a full page refresh. This makes web pages more dynamic and responsive to user input.
+
+How `XMLHttpRequest` is Used in AJAX
+
+AJAX (Asynchronous JavaScript and XML) relies on the `XMLHttpRequest` object to update parts of a web page without reloading the entire page. Here's how it works:
+
+1. Create an Instance of `XMLHttpRequest`:
+   The first step is to create a new instance of the `XMLHttpRequest` object.
+
+   ```javascript
+   const xhr = new XMLHttpRequest();
+   ```
+
+2. Open a Request:
+   The `.open()` method is used to set up the request. This method takes three arguments:
+   - The HTTP method (`GET`, `POST`, etc.)
+   - The URL to send the request to
+   - A boolean value (`true` for asynchronous, `false` for synchronous)
+
+   ```javascript
+   xhr.open('GET', 'https://api.example.com/data', true);
+   ```
+
+3. Define a Callback Function:
+   Set up a function to handle the server's response. The `onreadystatechange` event is triggered whenever the `readyState` property changes, and the function checks if the request is complete (`readyState === 4`) and was successful (`status === 200`).
+
+   ```javascript
+   xhr.onreadystatechange = function() {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+           // Process the response
+           console.log(xhr.responseText);
+       }
+   };
+   ```
+
+4. **Send the Request**:
+   Use the `.send()` method to send the request to the server. If it is a `POST` request, data can be passed as an argument to the `send()` method.
+
+   ```javascript
+   xhr.send();
+   ```

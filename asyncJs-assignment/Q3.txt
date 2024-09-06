@@ -1,0 +1,24 @@
+Q3. What is the same-origin policy in the context of AJAX requests, and how can you work around it?
+
+ans:
+Same-Origin Policy in AJAX
+The same-origin policy is a security measure implemented in browsers that restricts web pages from making requests to a different origin (domain, protocol, or port) than the one from which they were loaded. This prevents malicious scripts from accessing sensitive data on another site.
+
+Workarounds for Same-Origin Policy
+CORS (Cross-Origin Resource Sharing):
+The server allows cross-origin requests by sending appropriate HTTP headers (Access-Control-Allow-Origin). This is the most common and secure way to enable cross-origin requests.
+
+JSONP (JSON with Padding):
+A technique that uses <script> tags to load data from a different origin. The server returns data wrapped in a function call. This method only works with GET requests and has security risks.
+
+Proxy Server:
+Set up a proxy on the same origin as your web page. The client sends requests to the proxy server, which forwards them to the external server, bypassing the same-origin policy.
+
+Local Development Workarounds:
+Use browser extensions or start the browser with specific flags to disable the same-origin policy temporarily. This should only be used during development, not in production.
+
+These methods allow to bypass the same-origin policy and make cross-origin requests securely and effectively.
+
+
+
+

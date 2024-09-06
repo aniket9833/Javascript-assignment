@@ -1,0 +1,59 @@
+Q4.Compare Promises to callbacks and discuss why Promises are preferred for managing asynchronous
+code.
+
+ans:
+Callbacks
+Callbacks are functions passed as arguments to other functions, which are then invoked inside the outer function to complete some kind of routine or action. Here's a simple example:
+
+```javascript
+function fetchData(callback) {
+    setTimeout(() => {
+        callback("Data received");
+    }, 1000);
+}
+
+fetchData((message) => {
+    console.log(message);
+});
+```
+
+Pros:
+- Simple and straightforward: Easy to understand and use for simple asynchronous operations.
+- **Widely supported**: Callbacks have been around for a long time and are supported in all JavaScript environments.
+
+Cons:
+- Callback Hell: When dealing with multiple asynchronous operations, callbacks can lead to deeply nested code, making it hard to read and maintain. This is often referred to as "callback hell".
+- Error Handling: Managing errors in callbacks can be cumbersome and lead to repetitive code.
+
+Promises
+Promises provide a more elegant way to handle asynchronous operations. They represent a value that may be available now, or in the future, or never. Here's an example:
+
+```javascript
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Data received");
+        }, 1000);
+    });
+}
+
+fetchData().then((message) => {
+    console.log(message);
+});
+```
+
+Pros:
+- Chaining: Promises allow chaining of multiple asynchronous operations, making the code more readable and maintainable.
+- Error Handling: Promises provide a cleaner way to handle errors using `.catch()`, which can handle errors from any point in the promise chain.
+- Avoiding Callback Hell: Promises help avoid deeply nested callbacks, making the code structure flatter and easier to follow.
+
+Cons:
+- Complexity: For beginners, understanding Promises can be more complex compared to callbacks.
+- Browser Support: Older browsers may not support Promises natively, though this is less of an issue today with polyfills and modern JavaScript environments.
+
+Why Promises are Preferred
+1. Readability and Maintainability: Promises make asynchronous code look more like synchronous code, which is easier to read and maintain.
+2. Error Handling: Promises provide a unified way to handle errors, reducing the need for repetitive error-checking code.
+3. Chaining: Promises allow for chaining multiple asynchronous operations, making the flow of data and operations clearer.
+
+In summary, while callbacks are simple and effective for basic tasks, Promises offer a more robust and manageable approach for handling complex asynchronous operations.
